@@ -1,0 +1,27 @@
+models:
+  User:
+    name: string
+  Locker:
+    level: string
+    location: string
+    locker_number: int
+    status: enum:pending,successful,failed
+    user_id: id foreign
+    relationships:
+      belongsTo: User
+      belongsToMany: User
+      hasOne: Key
+  Key:
+    locker_id: id foreign
+    user_id: id foreign
+    relationships:
+      belongsTo: Locker,User
+
+
+controllers:
+  User:
+    resource
+  Locker:
+    resource
+  Key:
+   resource

@@ -1,0 +1,41 @@
+created:
+    - app/Http/Controllers/UserController.php
+    - app/Http/Controllers/LockerController.php
+    - app/Http/Controllers/KeyController.php
+    - database/factories/UserFactory.php
+    - database/factories/LockerFactory.php
+    - database/factories/KeyFactory.php
+    - database/migrations/2022_11_08_082726_create_users_table.php
+    - database/migrations/2022_11_08_082727_create_lockers_table.php
+    - database/migrations/2022_11_08_082728_create_keys_table.php
+    - database/migrations/2022_11_08_082729_create_locker_user_table.php
+    - app/Models/User.php
+    - app/Models/Locker.php
+    - app/Models/Key.php
+    - tests/Feature/Http/Controllers/UserControllerTest.php
+    - tests/Feature/Http/Controllers/LockerControllerTest.php
+    - tests/Feature/Http/Controllers/KeyControllerTest.php
+    - app/Http/Requests/UserStoreRequest.php
+    - app/Http/Requests/UserUpdateRequest.php
+    - app/Http/Requests/LockerStoreRequest.php
+    - app/Http/Requests/LockerUpdateRequest.php
+    - app/Http/Requests/KeyStoreRequest.php
+    - app/Http/Requests/KeyUpdateRequest.php
+    - resources/views/user/index.blade.php
+    - resources/views/user/create.blade.php
+    - resources/views/user/show.blade.php
+    - resources/views/user/edit.blade.php
+    - resources/views/locker/index.blade.php
+    - resources/views/locker/create.blade.php
+    - resources/views/locker/show.blade.php
+    - resources/views/locker/edit.blade.php
+    - resources/views/key/index.blade.php
+    - resources/views/key/create.blade.php
+    - resources/views/key/show.blade.php
+    - resources/views/key/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string }
+    Locker: { level: string, location: string, locker_number: int, status: 'enum:pending,successful,failed', user_id: 'id foreign', relationships: { belongsTo: User, belongsToMany: User, hasOne: Key } }
+    Key: { locker_id: 'id foreign', user_id: 'id foreign', relationships: { belongsTo: 'Locker,User' } }
